@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
 import os
+from pathlib import Path
 from decouple import config
 from dj_database_url import parse as dburl
 
@@ -40,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
+    'django_static_md5url',
+    'apps.app',
 ]
 
 MIDDLEWARE = [
@@ -57,7 +62,7 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # ここを変更
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -121,12 +126,19 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = str(BASE_DIR + '/staticfiles')
 
+# staticをmanage.pyと同じ階層で使うときに追加
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 # カスタムユーザーを使う
 AUTH_USER_MODEL = 'register.User'
 
 # ログインページと、直接ログインページへ行った後のリダイレクトページ
 LOGIN_URL = 'register:login'
-LOGIN_REDIRECT_URL = 'register:top'
+LOGIN_REDIRECT_URL = 'app:index'
 
 # メールをコンソールに表示する
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

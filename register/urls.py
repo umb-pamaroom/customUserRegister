@@ -1,9 +1,14 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
+from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 app_name = 'register'
 
 urlpatterns = [
+
+    # カスタムユーザ認証
     path('', views.Top.as_view(), name='top'),
     path('login/', views.Login.as_view(), name='login'),
     path('logout/', views.Logout.as_view(), name='logout'),
@@ -21,4 +26,7 @@ urlpatterns = [
     path('email/change/', views.EmailChange.as_view(), name='email_change'),
     path('email/change/done/', views.EmailChangeDone.as_view(), name='email_change_done'),
     path('email/change/complete/<str:token>/', views.EmailChangeComplete.as_view(), name='email_change_complete'),
+
+
+    path('diary/', include('apps.app.urls')),
 ]

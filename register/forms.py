@@ -31,9 +31,12 @@ class LoginForm(AuthenticationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # 「:」を削除
+        self.label_suffix = ""
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
-            field.widget.attrs['placeholder'] = field.label  # placeholderにフィールドのラベルを入れる
+           # field.widget.attrs['placeholder'] = field.label  # placeholderにフィールドのラベルを入れる
+           
 
 
 class UserCreateForm(UserCreationForm):
@@ -45,6 +48,8 @@ class UserCreateForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # 「:」を削除
+        self.label_suffix = ""
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
 
@@ -63,15 +68,20 @@ class UserUpdateForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # 「:」を削除
+        self.label_suffix = ""
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
 
 
 class MyPasswordChangeForm(PasswordChangeForm):
     """パスワード変更フォーム"""
+    id_email = forms.CharField(label="あ")
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # 「:」を削除
+        self.label_suffix = ""
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
 
@@ -81,6 +91,8 @@ class MyPasswordResetForm(PasswordResetForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # 「:」を削除
+        self.label_suffix = ""
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
 
@@ -90,5 +102,7 @@ class MySetPasswordForm(SetPasswordForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        # 「:」を削除
+        self.label_suffix = ""
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'

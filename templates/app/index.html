@@ -1,0 +1,25 @@
+
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+  <div class="heading">
+    <div>
+      <h1>日報一覧</h1>
+    </div>
+  </div>
+
+  <div class="fb indexFb">
+  {% for memo in memos %}
+  <div class="card">
+    <a href="{% url 'app:detail' memo.id %}">
+      <div class="fb">
+        <p class="title">{{ memo.dateData }}</p>
+        <p class="text">{{ memo.discovery }}</p>
+      </div>
+    </a>
+    </div>
+  {% endfor %}
+  </div>
+
+{% endblock %}

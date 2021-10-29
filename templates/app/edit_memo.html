@@ -1,0 +1,110 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+      <div class="heading">
+          <div>
+              <h1>日報編集</h1>
+          </div>
+      </div>
+
+    <form action="{% url 'app:edit_memo' memo.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class="form-table">
+            <tr>
+                <th>日付</th>
+                <td>{{ form.dateData }}</td>
+            </tr>
+            <tr>
+                <th>新しい発見</th>
+                <td>{{ form.discovery }}</td>
+            </tr>
+            <tr>
+                <th>一番印象に残ったこと</th>
+                <td>{{ form.tired }}</td>
+            </tr>
+            <tr>
+                <th>嬉しかったこと</th>
+                <td>{{ form.happy }}</td>
+            </tr>
+            <tr>
+                <th>頑張ったこと</th>
+                <td>{{ form.best }}</td>
+            </tr>
+            <tr>
+                <th>明日したいこと</th>
+                <td>{{ form.tomorrow }}</td>
+            </tr>
+            <tr>
+                <th>改善点</th>
+                <td>{{ form.dislike }}</td>
+            </tr>
+            <tr>
+                <th>その他</th>
+                <td>{{ form.other }}</td>
+            </tr>
+            <tr>
+                <th>1日のまとめ</th>
+                <td>{{ form.summarize }}</td>
+            </tr>
+            <tr>
+                <th>朝食</th>
+                <td>{{ form.breakfast }}</td>
+            </tr>
+            <tr>
+                <th>朝食名</th>
+                <td>{{ form.breakfastName }}</td>
+            </tr>
+            <tr>
+                <th>朝食評価</th>
+                <td>{{ form.breakfastEvaluation }}</td>
+            </tr>
+
+
+            <tr>
+                <th>昼食</th>
+                <td>{{ form.lunch }}</td>
+            </tr>
+            <tr>
+                <th>昼食名</th>
+                <td>{{ form.lunchName }}</td>
+            </tr>
+            <tr>
+                <th>昼食評価</th>
+                <td>{{ form.lunchEvaluation }}</td>
+            </tr>
+
+
+            <tr>
+                <th>夕食</th>
+                <td>{{ form.dinner }}</td>
+            </tr>
+            <tr>
+                <th>夕食名</th>
+                <td>{{ form.dinnerName }}</td>
+            </tr>
+            <tr>
+                <th>夕食評価</th>
+                <td>{{ form.dinnerEvaluation }}</td>
+            </tr>
+
+
+            <tr>
+                <th>間食</th>
+                <td>{{ form.snack }}</td>
+            </tr>
+            <tr>
+                <th>間食名</th>
+                <td>{{ form.snackName }}</td>
+            </tr>
+            <tr>
+                <th>間食評価</th>
+                <td>{{ form.snackEvaluation }}</td>
+            </tr>
+        </table>
+        <div class="tc">
+        <button class="btn btn-flat" type="submit">保存</button>
+        </div>
+    </form>
+
+{% endblock %}
